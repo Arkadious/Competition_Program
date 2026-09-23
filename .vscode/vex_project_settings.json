@@ -6,8 +6,8 @@
 	"project": {
 		"name": "Competition_Program",
 		"description": "Competition program written by MG.",
-		"creationDate": "3/26/2026, 6:50:20 PM",
 		"platform": "V5",
+		"creationDate": "3/26/2026, 6:50:20 PM",
 		"language": "cpp",
 		"slot": 1,
 		"sdkVersion": "V5_20240802_15_00_00",

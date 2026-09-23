@@ -1,4 +1,6 @@
-#include "pid.h"
+#include "vex.h"
+
+using namespace vex;
 
 implement_PID::implement_PID(double maximum, double minimum, double kProportional, double kIntegral, double kDerivative) {
     previous_time = 0;

@@ -1,11 +1,7 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdbool.h>
-#include <math.h>
-#include <string.h>
+#ifndef PID_H
+#define PID_H
 
-#include <iostream>
-#include <string>
+using namespace vex;
 
 class implement_PID {
     private:
@@ -22,7 +18,6 @@ class implement_PID {
         double D;
         double previous_error;
     public:
-        // implement_PID(double timeperiod, double maximum, double minimum, double kProportional, double kIntegral, double kDerivative);
         implement_PID(double maximum, double minimum, double kProportional, double kIntegral, double kDerivative);
         double calculate(double setpoint, double process_variable, double PID_timer);
         double get_kP();
@@ -50,3 +45,5 @@ class PID {
         void set_kD(double new_kD);
         ~PID();
 };
+
+#endif
