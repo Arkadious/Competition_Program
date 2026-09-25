@@ -13,11 +13,6 @@
 
 using namespace vex;
 
-// Define your protofunctions here, if necessary
-void pre_auton(void);
-void autonomous(void);
-void usercontrol(void);
-
 // define your global instances of motors and other devices here
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:

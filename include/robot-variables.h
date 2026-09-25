@@ -176,6 +176,10 @@ void vexcodeInit(void);
 void initializeRandomSeed(void);
 void playVexcodeSound(const char *soundName);
 
+void pre_auton(void);
+void autonomous(void);
+void usercontrol(void);
+
 /*----------------------------------------------------------------------------*/
 /* Used to initialize code/tasks/devices added using tools in VEXcode Pro.    */
 /* This should be called at the start of your int main function.              */
