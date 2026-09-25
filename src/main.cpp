@@ -105,9 +105,9 @@ void vexcodeInit(void) {
     // Calibrate the drivetrain Inertial before starting
     Brain.Screen.clearScreen();
     Brain.Screen.setCursor(1, 1);
-    Inertial6.calibrate();
     Brain.Screen.print("Calibrating Inertial for Drivetrain");
-
+    Inertial6.calibrate();
+    
     // Wait for the Inertial calibration process to finish
     while (Inertial6.isCalibrating()) {
         wait(25, msec);
@@ -327,18 +327,9 @@ int brain_display(void) {
 
   while(Competition.isEnabled()) {
     // Display the current state of the robot on the brain's screen for debugging purposes.
-    Brain.Screen.clearLine(1);
-    Brain.Screen.clearLine(2);
-    Brain.Screen.clearLine(3);
-    Brain.Screen.clearLine(4);
-    Brain.Screen.clearLine(5);
-    Brain.Screen.clearLine(6);
-    Brain.Screen.clearLine(7);
-    Brain.Screen.clearLine(8);
-    Brain.Screen.clearLine(9);
-    Brain.Screen.clearLine(10);
-    Brain.Screen.clearLine(11);
-    Brain.Screen.clearLine(12);
+    for (int i = 1; i <=12; i++) {
+      Brain.Screen.clearLine(i);
+    }
 
     Brain.Screen.setCursor(1, 1);
     if(!Competition.isAutonomous() && !Competition.isDriverControl()) {

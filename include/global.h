@@ -1,5 +1,5 @@
-#ifndef ROBOT_VARIABLES_H
-#define ROBOT_VARIABLES_H
+#ifndef GLOBAL_H
+#define GLOBAL_H
 
 #include "PID/pid.h"
 
