@@ -1,5 +1,5 @@
-#ifndef PID_H
-#define PID_H
+#ifndef PID_HPP
+#define PID_HPP
 
 using namespace vex;
 
@@ -43,6 +43,8 @@ class PID {
         void set_kP(double new_kP);
         void set_kI(double new_kI);
         void set_kD(double new_kD);
+        PID (const PID&) = delete;
+        PID& operator=(const PID&) = delete;
         ~PID();
 };
 

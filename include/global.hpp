@@ -1,7 +1,5 @@
-#ifndef GLOBAL_H
-#define GLOBAL_H
-
-#include "PID/pid.h"
+#ifndef GLOBAL_HPP
+#define GLOBAL_HPP
 
 using namespace vex;
 
@@ -161,25 +159,6 @@ extern double MiddleStrafeDrive_PID_values[3];
 
 extern int32_t value_select;
 
-extern PID LeftFrontDrive_PID;
-extern PID LeftBackDrive_PID;
-extern PID RightFrontDrive_PID;
-extern PID RightBackDrive_PID;
-extern PID MiddleStrafeDrive_PID;
-
-/*----------------------------------------------------------------------------*/
-/* Used to initialize code/tasks/devices added using tools in VEXcode Pro.    */
-/* This should be called at the start of your int main function.              */
-/*----------------------------------------------------------------------------*/
-
-void vexcodeInit(void);
-void initializeRandomSeed(void);
-void playVexcodeSound(const char *soundName);
-
-void pre_auton(void);
-void autonomous(void);
-void usercontrol(void);
-
 /*----------------------------------------------------------------------------*/
 /* Used to initialize code/tasks/devices added using tools in VEXcode Pro.    */
 /* This should be called at the start of your int main function.              */
@@ -191,7 +170,7 @@ int autonomous_background_tasks(void);
 int usercontrol_joysticks(void);
 int usercontrol_buttons(void);
 int joystick_tracking(void);
-int PID_loop(void);
+
 
 void onevent_Controller1_ButtonUp_pressed(void);
 void onevent_Controller1_ButtonUp_released(void);

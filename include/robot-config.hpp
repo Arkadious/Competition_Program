@@ -1,5 +1,5 @@
-#ifndef ROBOT_CONFIG_H
-#define ROBOT_CONFIG_H
+#ifndef ROBOT_CONFIG_HPP
+#define ROBOT_CONFIG_HPP
 
 using namespace vex;
 
@@ -26,5 +26,14 @@ extern motor_group LeftDrive;
 extern motor_group RightDrive;
 
 extern bool RemoteControlCodeEnabled;
+
+/*----------------------------------------------------------------------------*/
+/* Used to initialize code/tasks/devices added using tools in VEXcode Pro.    */
+/* This should be called at the start of your int main function.              */
+/*----------------------------------------------------------------------------*/
+
+void vexcodeInit(void);
+void initializeRandomSeed(void);
+void playVexcodeSound(const char *soundName);
 
 #endif

@@ -9,150 +9,32 @@
 
 #define _USE_MATH_DEFINES
 
-#include "vex.h"
+#include "vex.hpp"
 
 using namespace vex;
 
-// define your global instances of motors and other devices here
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]                 [Type]        [Port(s)]
-// LeftFrontDrive         motor         1
-// LeftBackDrive          motor         2
-// RightFrontDrive        motor         3
-// RightBackDrive         motor         4
-// MiddleStrafeDrive      motor         5
-// Inertial6              inertial      6
-// Rotation7              rotation      7
-// GPS8                   gps           8
-// Distance9              distance      9
-// Optical10              optical       10
-// Controller1            controller    primary
-// Controller2            controller    partner
-// ---- END VEXCODE CONFIGURED DEVICES ----
-
-/*---------------------------------------------------------------------------*/
-/* Main will set up the competition functions and callbacks.                 */
-/*---------------------------------------------------------------------------*/
+void pre_auton(void);
+void autonomous(void);
+void usercontrol(void);
 
 int main(void) {
   Brain.Timer.clear();
 
   competition::bStopAllTasksBetweenModes = false;
 
-  // Set up callbacks for autonomous and driver control periods.
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
 
-  // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
-  // Run the pre-autonomous function.
   pre_auton();
 
-  // Prevent main from exiting with an infinite loop.
   while(true) {
     wait(100, msec);
   }
 
   return 0;
 }
-
-// VEXcode generated functions
-/*----------------------------------------------------------------------------*/
-/* Used to initialize code/tasks/devices added using tools in VEXcode Pro.    */
-/* This should be called at the start of your int main function.              */
-/*----------------------------------------------------------------------------*/
-
-void vexcodeInit(void) {
-    waitUntil(Brain.Screen.pressing());
-
-    initializeRandomSeed();
-    Brain.Timer.clear();
-    Brain.Screen.print("Device initialization...");
-    Brain.Screen.setCursor(2, 1);
-    wait(1000, msec);
-
-    Brain.Screen.clearScreen();
-    Brain.Screen.setCursor(1, 1);
-    Brain.Screen.setFillColor(red);
-    Brain.Screen.drawRectangle(0, 0, 240, 240);
-    Brain.Screen.setFillColor(blue);
-    Brain.Screen.drawRectangle(240, 0, 240, 240);
-    Brain.Screen.setFillColor(transparent);
-    waitUntil(Brain.Screen.pressing());
-
-    if ((Brain.Screen.xPosition() >= 0 && Brain.Screen.xPosition() <= 239) && (Brain.Screen.yPosition() >= 0 && Brain.Screen.yPosition() <= 239)) {
-    red_alliance = true;
-    blue_alliance = false;
-    }
-    else {
-      red_alliance = false;
-      blue_alliance = true;
-    }
-    Brain.Screen.clearScreen();
-    Brain.Screen.setFillColor(transparent);
-    wait(1000, msec);
-
-    if (red_alliance) {
-      Brain.Screen.print("Red Alliance selected...");
-    }
-    else {
-      Brain.Screen.print("Blue Alliance selected...");
-    }
-    wait(1000, msec);
-    
-    // Calibrate the drivetrain Inertial before starting
-    Brain.Screen.clearScreen();
-    Brain.Screen.setCursor(1, 1);
-    Brain.Screen.print("Calibrating Inertial for Drivetrain");
-    Inertial6.calibrate();
-    
-    // Wait for the Inertial calibration process to finish
-    while (Inertial6.isCalibrating()) {
-        wait(25, msec);
-    }
-    wait(200, msec);
-
-    // Calibrate the GPS sensor before starting
-    GPS8.calibrate();
-    while (GPS8.isCalibrating()) { task::sleep(50); }
-
-    // Reset the screen now that the calibration is complete
-    Brain.Screen.clearScreen();
-    Brain.Screen.setCursor(1,1);
-    wait(50, msec);
-}
-
-// Generating and setting random seed
-void initializeRandomSeed(void) {
-  int systemTime = Brain.Timer.systemHighResolution();
-  double batteryCurrent = Brain.Battery.current();
-  double batteryVoltage = Brain.Battery.voltage(voltageUnits::mV);
-
-  // Combine these values into a single integer
-  int seed = int(batteryVoltage + batteryCurrent * 100) + systemTime;
-
-  // Set the seed
-  srand(seed);
-}
-
-// Helper to make playing sounds from the V5 in VEXcode easier and
-// keeps the code cleaner by making it clear what is happening.
-void playVexcodeSound(const char *soundName) {
-  printf("VEXPlaySound:%s\n", soundName);
-  wait(5, msec);
-}
-
-/*---------------------------------------------------------------------------*/
-/*                          Pre-Autonomous Functions                         */
-/*                                                                           */
-/*  You may want to perform some actions before the competition starts.      */
-/*  Do them in the following function.  You must return from this function   */
-/*  or the autonomous and usercontrol tasks will not be started.  This       */
-/*  function is only called once after the V5 has been powered on and        */
-/*  not every time that the robot is disabled.                               */
-/*---------------------------------------------------------------------------*/
 
 void pre_auton(void) {
   thread brain_display_thread = thread(brain_display);;
@@ -195,16 +77,6 @@ void pre_auton(void) {
   brain_display_thread.interrupt();
   motor_tracking_thread.interrupt();
 }
-
-/*---------------------------------------------------------------------------*/
-/*                                                                           */
-/*                              Autonomous Task                              */
-/*                                                                           */
-/*  This task is used to control your robot during the autonomous phase of   */
-/*  a VEX Competition.                                                       */
-/*                                                                           */
-/*  You must modify the code to add your own robot specific commands here.   */
-/*---------------------------------------------------------------------------*/
 
 void autonomous(void) {
   LeftFrontDrive.setMaxTorque(100, percent);
@@ -255,16 +127,6 @@ int autonomous_background_tasks(void) {
   return 0;
 }
 
-/*---------------------------------------------------------------------------*/
-/*                                                                           */
-/*                              User Control Task                            */
-/*                                                                           */
-/*  This task is used to control your robot during the user control phase of */
-/*  a VEX Competition.                                                       */
-/*                                                                           */
-/*  You must modify the code to add your own robot specific commands here.   */
-/*---------------------------------------------------------------------------*/
-
 void usercontrol(void) {
   LeftFrontDrive.setMaxTorque(100, percent);
   LeftBackDrive.setMaxTorque(100, percent);
@@ -306,8 +168,7 @@ void usercontrol(void) {
     R1 = Controller1.ButtonR1.pressing();
     R2 = Controller1.ButtonR2.pressing();
 
-    wait(10, msec); // Sleep the task for a short amount of time to
-                    // prevent wasted resources.
+    wait(10, msec);
   }
 
   usercontrol_joysticks_thread.interrupt();
@@ -316,9 +177,8 @@ void usercontrol(void) {
   PID_loop_thread.interrupt();
 }
 
-// User generated functions
 /*----------------------------------------------------------------------------*/
-/* Used to initialize code/tasks/devices added using tools in VEXcode Pro.    */
+/* User generated functions                                                   */
 /*----------------------------------------------------------------------------*/
 
 int brain_display(void) {

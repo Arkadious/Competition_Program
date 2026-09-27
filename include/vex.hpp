@@ -1,15 +1,17 @@
+#pragma once
+
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <string.h>
-#include <math.h>
+
 
 #include "v5.h"
 #include "v5_vcs.h"
 
-#include "robot-config.h"
-#include "global.h"
-#include "PID/pid.h"
+#include "robot-config.hpp"
+#include "global.hpp"
+#include "PID/global-pid.hpp"
 
 // START V5 MACROS
 #define waitUntil(condition)                                                   \

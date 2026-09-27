@@ -1,4 +1,4 @@
-#include "vex.h"
+#include "vex.hpp"
 
 using namespace vex;
 
@@ -150,18 +150,4 @@ double wheel_diameter = 0.1016; // 4 inches in meters
 double wheel_radius = wheel_diameter / 2;
 double wheel_circumference = wheel_diameter * M_PI;
 
-bool PID_enabled = true;
-
-double LeftFrontDrive_PID_values[3];
-double LeftBackDrive_PID_values[3];
-double RightFrontDrive_PID_values[3];
-double RightBackDrive_PID_values[3];
-double MiddleStrafeDrive_PID_values[3];
-
 int32_t value_select = 0;
-
-PID LeftFrontDrive_PID = PID(100.0, -100.0, 0.0, 0.0, 0.0);
-PID LeftBackDrive_PID = PID(100.0, -100.0, 0.0, 0.0, 0.0);
-PID RightFrontDrive_PID = PID(100.0, -100.0, 0.0, 0.0, 0.0);
-PID RightBackDrive_PID = PID(100.0, -100.0, 0.0, 0.0, 0.0);
-PID MiddleStrafeDrive_PID = PID(100.0, -100.0, 0.0, 0.0, 0.0);
