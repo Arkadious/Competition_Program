@@ -35,7 +35,7 @@ bool RemoteControlCodeEnabled = true;
 /*----------------------------------------------------------------------------*/
 
 void vexcodeInit(void) {
-    waitUntil(Brain.Screen.pressing());
+    waitUntil(Brain.Screen.pressing() || Brain.Timer.time(msec) >= 4000);
 
     initializeRandomSeed();
     Brain.Timer.clear();
