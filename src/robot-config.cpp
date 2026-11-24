@@ -28,6 +28,10 @@ controller Controller2 = controller(partner);
 // Define variable for remote controller enable/disable
 bool RemoteControlCodeEnabled = true;
 
+// User defined variables
+bool red_alliance = true;
+bool blue_alliance = false;
+
 // VEXcode generated functions
 /*----------------------------------------------------------------------------*/
 /* Used to initialize code/tasks/devices added using tools in VEXcode Pro.    */
@@ -71,13 +75,13 @@ void vexcodeInit(void) {
       Brain.Screen.print("Blue Alliance selected...");
     }
     wait(1000, msec);
-    
+
     // Calibrate the drivetrain Inertial before starting
     Brain.Screen.clearScreen();
     Brain.Screen.setCursor(1, 1);
     Brain.Screen.print("Calibrating Inertial for Drivetrain");
     Inertial6.calibrate();
-    
+
     // Wait for the Inertial calibration process to finish
     while (Inertial6.isCalibrating()) {
         wait(25, msec);

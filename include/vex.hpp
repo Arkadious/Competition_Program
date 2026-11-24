@@ -5,13 +5,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 #include "v5.h"
 #include "v5_vcs.h"
 
 #include "robot-config.hpp"
 #include "global.hpp"
-#include "PID/global-pid.hpp"
+#include "Controller/buttons.hpp"
+#include "Controller/joysticks.hpp"
+#include "Drivetrain/drivetrain.hpp"
+#include "Motion/motor-tracking.hpp"
+#include "PID/pid-global.hpp"
 
 // START V5 MACROS
 #define waitUntil(condition)                                                   \

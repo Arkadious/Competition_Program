@@ -1,0 +1,112 @@
+#ifndef MOTOR_TRACKING_HPP
+#define MOTOR_TRACKING_HPP
+
+using namespace vex;
+
+extern double wheel_diameter; // 4 inches in meters
+extern double wheel_radius;
+extern double wheel_circumference;
+
+extern double LeftFrontDrive_percent_input;
+extern double LeftBackDrive_percent_input;
+extern double RightFrontDrive_percent_input;
+extern double RightBackDrive_percent_input;
+extern double MiddleStrafeDrive_percent_input;
+
+extern double LeftFrontDrive_rpm_input;
+extern double LeftBackDrive_rpm_input;
+extern double RightFrontDrive_rpm_input;
+extern double RightBackDrive_rpm_input;
+extern double MiddleStrafeDrive_rpm_input;
+
+extern double LeftFrontDrive_voltage_output;
+extern double LeftBackDrive_voltage_output;
+extern double RightFrontDrive_voltage_output;
+extern double RightBackDrive_voltage_output;
+extern double MiddleStrafeDrive_voltage_output;
+
+extern double LeftFrontDrive_current_output;
+extern double LeftBackDrive_current_output;
+extern double RightFrontDrive_current_output;
+extern double RightBackDrive_current_output;
+extern double MiddleStrafeDrive_current_output;
+
+extern double LeftFrontDrive_power_output;
+extern double LeftBackDrive_power_output;
+extern double RightFrontDrive_power_output;
+extern double RightBackDrive_power_output;
+extern double MiddleStrafeDrive_power_output;
+
+extern double LeftFrontDrive_temperature_output;
+extern double LeftBackDrive_temperature_output;
+extern double RightFrontDrive_temperature_output;
+extern double RightBackDrive_temperature_output;
+extern double MiddleStrafeDrive_temperature_output;
+
+extern double LeftFrontDrive_torque_output;
+extern double LeftBackDrive_torque_output;
+extern double RightFrontDrive_torque_output;
+extern double RightBackDrive_torque_output;
+extern double MiddleStrafeDrive_torque_output;
+
+extern double LeftFrontDrive_efficiency_output;
+extern double LeftBackDrive_efficiency_output;
+extern double RightFrontDrive_efficiency_output;
+extern double RightBackDrive_efficiency_output;
+extern double MiddleStrafeDrive_efficiency_output;
+
+extern double LeftFrontDrive_position_output;
+extern double LeftBackDrive_position_output;
+extern double RightFrontDrive_position_output;
+extern double RightBackDrive_position_output;
+extern double MiddleStrafeDrive_position_output;
+
+extern double LeftFrontDrive_percent_output;
+extern double LeftBackDrive_percent_output;
+extern double RightFrontDrive_percent_output;
+extern double RightBackDrive_percent_output;
+extern double MiddleStrafeDrive_percent_output;
+
+extern double LeftFrontDrive_percent;
+extern double LeftBackDrive_percent;
+extern double RightFrontDrive_percent;
+extern double RightBackDrive_percent;
+extern double MiddleStrafeDrive_percent;
+
+extern double LeftFrontDrive_rpm_output;
+extern double LeftBackDrive_rpm_output;
+extern double RightFrontDrive_rpm_output;
+extern double RightBackDrive_rpm_output;
+extern double MiddleStrafeDrive_rpm_output;
+
+extern double LeftFrontDrive_angular_velocity_output;
+extern double LeftBackDrive_angular_velocity_output;
+extern double RightFrontDrive_angular_velocity_output;
+extern double RightBackDrive_angular_velocity_output;
+extern double MiddleStrafeDrive_angular_velocity_output;
+
+extern double LeftFrontDrive_linear_velocity_output;
+extern double LeftBackDrive_linear_velocity_output;
+extern double RightFrontDrive_linear_velocity_output;
+extern double RightBackDrive_linear_velocity_output;
+extern double MiddleStrafeDrive_linear_velocity_output;
+
+extern bool LeftFrontDrive_isDone_output;
+extern bool LeftBackDrive_isDone_output;
+extern bool RightFrontDrive_isDone_output;
+extern bool RightBackDrive_isDone_output;
+extern bool MiddleStrafeDrive_isDone_output;
+
+extern bool LeftFrontDrive_isSpinning_output;
+extern bool LeftBackDrive_isSpinning_output;
+extern bool RightFrontDrive_isSpinning_output;
+extern bool RightBackDrive_isSpinning_output;
+extern bool MiddleStrafeDrive_isSpinning_output;
+
+extern directionType LeftFrontDrive_direction_output;
+extern directionType LeftBackDrive_direction_output;
+extern directionType RightFrontDrive_direction_output;
+extern directionType RightBackDrive_direction_output;
+extern directionType MiddleStrafeDrive_direction_output;
+
+#endif // MOTOR_TRACKING_HPP

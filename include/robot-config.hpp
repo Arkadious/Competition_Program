@@ -27,6 +27,9 @@ extern motor_group RightDrive;
 
 extern bool RemoteControlCodeEnabled;
 
+extern bool red_alliance;
+extern bool blue_alliance;
+
 /*----------------------------------------------------------------------------*/
 /* Used to initialize code/tasks/devices added using tools in VEXcode Pro.    */
 /* This should be called at the start of your int main function.              */
